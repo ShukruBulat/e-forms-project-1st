@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Rent Contract</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <main class="wrapper">
+
+    <form class="container" id="contract" name="contract">
+      <h1 class="bg-colored">KİRA SÖZLEŞMESİ</h1>
+      <div class="contract-date-no bg-colored">
+        <div class="input-line">
+          <label for="contract-date">Kontrat Tarihi:</label>
+          <input type="date" id="contract-date" name="contract-date" required>
+        </div>
+        <div class="input-line">
+          <label for="contract-no"> Kontrat No:</label>
+          <input type="text" id="contract-no" name="contract-no" value="" required>
+        </div>
+      </div>
+  
+      <div class="contractors bg-colored">
+        <div class="leaser">
+          <h4>Malik (Kiralayan / Kiraya Veren)</h4>
+          <div class="input-line"><label for="leaser-name">Adı Soyadı :</label><input id="leaser-name" type="text" maxlength="50" autocomplete="no" required></div>
+          <div class="input-line"><label for="leaser-id-no">Kimlik No :</label><input id="leaser-id-no" type="text" maxlength="25" required></div>
+          <div class="input-line"><label for="leaser-tel">Telefon :</label><input id="leaser-tel" type="tel" placeholder="5xx-xxx-xxx-xx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{2}" autocomplete="no" required></div>
+          <div class="input-line"><label for="leaser-email">E-mail :</label><input id="leaser-email" type="email" maxlength="50" autocomplete="no" required></div>
+          <!--<h4>Adres</h4>-->
+          <ul class="leaser-address">
+            <li class="input-line"><label for="leaser-city">İl :</label><input id="leaser-city" type="text" maxlength="25" autocomplete="no" required></li>
+            <li class="input-line"><label for="leaser-town">İlçe :</label><input id="leaser-town" type="text" maxlength="25" autocomplete="no" required></li>
+            <li class="input-line"><label for="leaser-district">Mahalle :</label><input id="leaser-district" type="text" maxlength="50" autocomplete="no" required></li>
+            <li class="input-line"><label for="leaser-street">Cadde / Bulvar :</label><input id="leaser-street" type="text" maxlength="50" autocomplete="no" required></li>
+            <li class="input-line"><label for="leaser-corner">Sokak :</label><input id="leaser-corner" type="text" maxlength="50" autocomplete="no"></li>
+            <li class="input-line"><label for="leaser-building-no">Kapı No :</label><input id="leaser-building-no" type="text" maxlength="50" placeholder="Bina kapi no / daire no" required></li>
+          </ul>
+        </div>
+  
+        <div class="tenant">
+          <h4>Kiracı</h4>
+          <div class="input-line"><label for="tenant-name">Adı Soyadı :</label><input id="tenant-name" type="text" maxlength="50" autocomplete="no" required></div>
+          <div class="input-line"><label for="tenant-id-no">Kimlik No :</label><input id="tenant-id-no" type="text" maxlength="25" required></div>
+          <div class="input-line"><label for="tenant-tel">Telefon :</label><input id="tenant-tel" type="tel" placeholder="5xx-xxx-xxx-xx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{2}" autocomplete="no" required></div>
+          <div class="input-line"><label for="tenant-email">E-mail :</label><input id="tenant-email" type="email" maxlength="50" autocomplete="no" required></div>
+          <ul class="tenant-address lightgray">
+            <li class="input-line"><label for="tenant-city">İl :</label><input id="tenant-city" type="text" maxlength="25" autocomplete="no" required></li>
+            <li class="input-line"><label for="tenant-town">İlçe :</label><input id="tenant-town" type="text" maxlength="25" autocomplete="no" required></li>
+            <li class="input-line"><label for="tenant-district">Mahalle :</label><input id="tenant-district" type="text" maxlength="50" autocomplete="no" required></li>
+            <li class="input-line"><label for="tenant-street">Cadde / Bulvar :</label><input id="tenant-street" type="text" maxlength="50" autocomplete="no" required></li>
+            <li class="input-line"><label for="tenant-corner">Sokak :</label><input id="tenant-corner" type="text" maxlength="50" autocomplete="no"></li>
+            <li class="input-line"><label for="tenant-building-no">Kapı No :</label><input id="tenant-building-no" type="text" maxlength="50" placeholder="Bina kapi no / daire no" required></li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="terms  bg-colored">
+        <h4 id="t-header">Kira Sözleşmesi Tarihi, Süresi, Ödeme Şartları</h4>
+        <div class="terms-grid">
+          <div class="terms-date">
+            <div class="input-line"><label for="date-start">Başlangıç Tarihi :</label><input id="date-start" type="date" dateformat="DD.MM.YY" required></div>
+            <div class="input-line"><label for="date-end">Bitiş tarihi :</label><input id="date-end" type="date" required></div>
+            <div class="input-line"><label for="date-month">Kira Süresi (Ay) :</label><input id="date-month" type="number" min="1" max="120" required></div>
+          </div>
+          <div class="terms-value">
+            <div class="input-line"><label for="rent-term">Kira Dönemi :</label><input id="rent-term" type="text" placeholder="Ay" required></div>
+            <div class="input-line"><label for="rent-per-term">Dönem Kira Bedeli :</label><input id="rent-per-term" type="text" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="₺ 1,000.00" required></div>
+            <div class="input-line"><label for="value-year">Yıllık Kira Bedeli :</label><input id="value-year" type="text" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="₺ 12,000.00" required></div>
+            <div class="input-line"><label for="value-security">Depozito Bedeli :</label><input id="value-security" type="text" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="₺ 2,000.00" required></div>
+          </div>
+        </div>
+        <div class="terms-payment">
+          <div class="input-long"><label for="payment-via">Malik Banka Hesabı :</label><input id="payment-via" type="text" maxlength="150" value="Ziraat Bankası IBAN ₺ TRxx xxxx xxxx xxxx xxxx xxxx xx" required></div>
+          <div class="input-long"><label for="payment-time">Ödeme Zamanı :</label><input id="payment-time" type="text" maxlength="120" value="her dönemin başlangıcından önceki 5 gün ve çalışma saatleri içinde" required></div>
+        </div>
+      </div>
+  
+      <div class="property-main  bg-colored">
+        <h4>Mülk (Mesken / Konut / Kiralanan) Ozellikleri, Demirbaşlar, Sayaç ve Adres Bilgileri</h4>
+        <div class="property">
+          <div class="input-long"><label for="re-type">Cinsi :</label><input id="re-type" type="text" maxlength="50" value="Apartman Dairesi" required></div>
+          <div class="input-long"><label for="re-use">Kullanım Şekli :</label><input id="re-use" type="text" maxlength="50" value="Yalnızca konut olarak" required></div>
+          <div class="input-long"><label for="fixtures">Demirbaşlar :</label><textarea id="fixtures" class="fixtures" required>
+  MUTFAK : Mutfak dolabı, evye, ... marka fırın, ocak, ... marka bulaşık makinesi, ... marka kombi, evye bataryası 
+  BANYO : Banyo dolabı, lavabo, lavabo bataryası, duş teknesi, klozet, klozet kapağı ve sair armatürler. 
+  E.BANYO : Banyo dolabı, lavabo, lavabo bataryası, duş teknesi, klozet, klozet kapağı ve sair armatürler
+  SALON: ... marka split klima 
+  DİĞER : Çelik kapı 
+            </textarea></div>
+          <div class="input-long">
+            <label for="re-handover">Devir Tutanağı :</label>
+            <textarea id="re-handover" type="text" required>
+  Sağlam, tam ve kullanılmaya elverişli ve yeni boyanmıştır. Yer kaplamalari, kapılar, pencereler ve aksesuarları iyi durumdadır.
+            </textarea>
+            </div>
+          <div class="input-long"><label for="re-paint">Boya Şartı :</label>
+            <textarea id="re-paint" type="text" required>
+  Kiracı dairenin boyanması için piyasa muadili boya ve boyama bedelinin depozitodan mahsup edileceğini kabul eder.
+              </textarea>
+              </div>
+        </div>
+        <div class="subject">
+          <ul class="utility-list">
+            <li class="input-line"><label for="re-electricity">Elektrik Sayac No :</label><input id="re-electricity" type="text" maxlength="25" required></li>
+            <li class="input-line"><label for="re-gas">Dogalgaz Sayac No :</label><input id="re-gas" type="text" maxlength="25" required></li>
+            <li class="input-line"><label for="re-water">Su Sayac No :</label><input id="re-water" type="text" maxlength="25" required></li>
+            <li class="input-line"><label for="re-insurance">Dask Poliçe No :</label><input id="re-insurance" type="text" maxlength="25" required></li>
+          </ul>
+          <ul class="re-address">
+            <li class="input-line"><label for="re-city">İl :</label><input class="form-control" id="re-city" type="text" maxlength="25" autocomplete="no" required></li>
+            <li class="input-line"><label for="re-town">İlçe :</label><input class="form-control" id="re-town" type="text" maxlength="25" autocomplete="no" required></li>
+            <li class="input-line"><label for="re-district">Mahalle :</label><input class="form-control" id="re-district" type="text" maxlength="50" autocomplete="no" required></li>
+            <li class="input-line"><label for="re-street">Cadde / Bulvar :</label><input class="form-control" id="re-street" type="text" maxlength="50" autocomplete="no" required></li>
+            <li class="input-line"><label for="re-corner">Sokak :</label><input class="form-control" id="re-corner" type="text" maxlength="50" autocomplete="no" required></li>
+            <li class="input-line"><label for="re-building-no">Kapı No :</label><input class="form-control" id="re-building-no" type="text" maxlength="50" placeholder="Bina kapi no / daire no" required></li>
+          </ul>
+        </div>
+      </div>
+  
+      <footer class="page-footer">
+        <div class="f-landlord">
+          <h4 class="bg-colored">Malik</h4>
+          <p><cite>İmza</cite></p>
+          <p class="landlord">.........</p>
+        </div>
+        <div class="f-tenant">
+          <h4 class="bg-colored">Kiracı</h4>
+          <p><cite>İmza</cite></p>
+          <p class="renter">.........</p>
+        </div>
+        <div class="f-guarantor">
+          <h4 class="bg-colored">Kiracı Kefili</h4>
+          <p><cite>İmza</cite></p>
+          <input class="guarantor" id="guarant-name" type="text" maxlength="50" placeholder="Kefilin Adını ve Soyadını giriniz..." required>
+        </div>
+        <div class="pagenumber"></div>
+      </footer>
+  
+      <p class="page-header"> </p>
+  
+      <div class="articles">
+        <ol id="article" type="1">
+          <li>TARAFLAR</li>
+          <p>Bu anlaşma (bundan böyle "Kira Sözleşmesi" olarak anılacaktır) <span class="auto landlord"> ...........</span> (bundan sonra "Malik" olarak anılacaktır) ve <span class="auto renter">...........</span> (bundan sonra "Kiracı" olarak anılacaktır) arasında yapılmış ve imzalanmıştır.</p>
+          <li>EMLAK</li>
+          <p>Malik, bu sözleşmede belirtilen adresinde bulunan gayrimenkulün ve müştemilatının (bundan böyle "Mülk" olarak anılacaktır) sahibidir. Malik, Mülkü burada yer alan hüküm ve koşullara göre Kiracıya kiralamak ve Kiracı, Mülkü burada yer alan hüküm ve koşullara göre Malikten kiralamak istemektedir.</p>
+          <li>KİRA SÜRESİ</li>
+          <p>Bu Kira Sözleşmesi <span class="auto datestart">../../....</span> tarihinde başlayacak ve fesih tarihine kadar Kira Sözleşmesi olarak devam edecektir. Fesih tarihi <span class="auto dateend">../../....</span>, 23:59 olacaktır. Fesih tarihinde, aşağıdaki durumlardan biri gerçekleşmedikçe, Kiracının Mülkü boşaltması gerekecektir:</p>
+          <ol class="sub-ol" type="i">
+            <li>Malik ve Kiracı bu Kira Sözleşmesini <b>ek bir yazılı mutabakat ile uzatır</b>; veya</li>
+            <li>Malik ve Kiracı, yazılı ve imzalı bir <b>yeni Kira Sözleşmesi</b> oluşturup yürütür; veya</li>
+            <li>Malik bilerek ve isteyerek fesih tarihinden sonra Kiracının yeni dönem kira ödemesini (vadesi geçmiş kira borcu ödemeleri yeni dönem kirası kabul edilmez) kabul eder.</li>
+          </ol>
+          <p>Malikin fesih tarihinden sonra Kiracıdan yeni kira kabul etmesi durumunda, iş bu sözleşme <b>Aylık Kira Sözleşmesine</b> dönüşür ve bu Kira Sözleşmesinde belirtilen diğer tüm şartlar ve koşullar tam olarak yürürlükte kalır.</p>
+          <p>Taraflardan herhangi birinin herhangi bir zamanda bu Aylık Kira Sözleşmesini feshetmek istemesi halinde, söz konusu taraf, diğer tarafa, istenen fesih tarihinden en az <span contenteditable>30 gün</span> önce feshetme niyetini yazılı olarak bildirerek bunu yapabilir. Fesih ihbarları, Başlangıç Tarihine bakılmaksızın herhangi bir takvim gününde verilebilir.</p>
+          <p>Kira ödemleri, bu Kira Sözleşmesinde belirtilen bedelle veya yasaların veya bu Kira Sözleşmesinin izin verdiği şekilde artırılarak devam edecektir.</p>
+          <li>KİRA</li>
+          <p>Kiracı, Malike Sözleşme Süresi için Kira olarak her kira dönemi <span class="auto rentperterm">₺ ...........</span> ödeyecektir. Ödeme <span class="auto payvia">Ziraat Bankası IBAN ₺ TRxx xxxx xxxx xxxx xxxx xxxx xx</span> hesabına EFT/Havele ile yapılacaktır. Kira ödemesi için vade tarihi <span class="auto paytime">her dönemin başlangıcından önceki 5 gün ve çalışma saatleri içinde</span> olacak ve o dönem için ön ödeme olarak kabul edilecektir.
+          </p>
+          <ol class="sub-ol" type="A">
+            <li>Ödenmemiş Kira. Vade tarihine kadar ödenmez ise, kira gecikmiş ve ödenmemiş kabul edilecektir.</li>
+            <li>Kira ödemelerinde gecikmenin <span contenteditable>10 günü</span> aşması halinde Malik, geciken ödemenin %<span contenteditable>10'u</span> kadar gecikme cezası ödenmesini talep edebilir ve Kiracı bu bedeli ödemeyi kabul ve beyan eder.</li>
+            <li>Kira Artışı. Bu Kira Sözleşmesi otomatik olarak Aylık Kira Sözleşmesine dönüşürse , Malik Kiracıya yazılı bildirimde bulunarak kirayı takip eden 12 ay için geçerli olmak üzere artırabilir. Kira artışı henüz kira ödemesi yapılmayan kira ayını takip eden ay ve sonraki aylar için geçerli olacaktır. Kira artışı en az <span contenteditable>geçmiş 12 aylık TÜFE ortalaması oranında</span> olacaktır.</li>
+            <li>Malik ve Kiracı kira bedelinin benzer emsallerine göre en fazla %<span contenteditable>5</span> düşük olabileceğini kabul ederler. Yeni dönem kira bedeli, emsal değer farkının iş bu maddede belirtilen üst limite düşürülmesini sağlayacak kira artışı yapılarak belirlenir. Kiracının bu hükmün uygulanmasından kaçınması Malik için haklı fesih nedenidir.</li>
+          </ol>
+  
+          <li>GÜVENCE BEDELİ</li>
+          <p>Kiracı, işbu süre zarfında Mülkte meydana gelen herhangi bir hasar için teminat olarak Malik tarafından makbuzu işbu belge ile kabul edilen <span class="auto deposit">₺ .......</span> meblağı Malik hesabına yatıracaktır. İş bu sözleşmenin feshi üzerine söz konusu Güvence Bedeli, faizsiz olarak ve Mülke verilen zararlar mahsup edildikten sonra Kiracıya iade edilecektir. Kesintiler Güvence Bedelini aşarsa, Kiracı eksik kalan tutarı Malik yazılı talepte bulunduktan sonra <span contenteditable>10 gün</span> içinde Malike ödeyecektir. Güvence Bedeli önce gecikme ücretleri, onarımlar, aracılık ücretleri ve periyodik hizmetler dahil olmak üzere kira dışı ögelere, sonra da ödenmemiş kiralara mahsup edilecektir.</p>
+  
+          <li>MÜLKÜN KULLANIMI</li>
+          <p>Mülk, yalnızca Kiracı, Kiracının eşi ve çocukları ile Kiracının veya eşinin <span contenteditable>1- Annesi: ....... .......</span> ve <span contenteditable> 2- Babası: ....... .......</span> oluşan yakın ailesi tarafından, yalnızca özel bir tek ailelik mesken olarak ikamet amaçlı kullanılacaktır.</p>
+          <p>Mülklerin hiçbir bölümü, işbu Kira Sözleşmesinin süresi boyunca Kiracı tarafından herhangi bir iş, meslek veya herhangi bir türden ticareti gerçekleştirmek amacıyla veya bir tek ailelik mesken dışında herhangi özel bir amaçla kullanılmayacaktır.</p>
+          <p>Kiracı, Mülkün temizliğini, kullanımını, ikamet edilebilirliğini ve korunmasını ilgilendiren tüm resmi veya yarı-resmi makamların tüm yasalarına, yönetmeliklerine, kurallarına ve emirlerine uyacaktır.</p>
+  
+          <li>MÜLKÜN DURUMU</li>
+          <p>Kiracı, Kiracının Mülkü incelemiş olduğunu ve bu Kira sözleşmesi sırasında iyi durumda, düzenli ve bakımlı olup, güvenli, temiz ve kiralanabilir durumda olduklarını kabul ve beyan eder.</p>
+          
+          <footer class="page-footer">
+            <div class="f-landlord">
+              <h4 class="bg-colored">Malik</h4>
+              <p><cite>İmza</cite></p>
+              <p class="landlord">.........</p>
+            </div>
+            <div class="f-tenant">
+              <h4 class="bg-colored">Kiracı</h4>
+              <p><cite>İmza</cite></p>
+              <p class="renter">.........</p>
+            </div>
+            <div class="f-guarantor">
+              <h4 class="bg-colored">Kiracı Kefili</h4>
+              <p><cite>İmza</cite></p>
+              <p class="guarantor">.........</p>
+            </div>
+            <div class="pagenumber"></div>
+          </footer>
+  
+          <div class="page-header"> </div>
+  
+          <li>DEVİR VE ALT KİRALAMA</li>
+          <p>Kiracı, Malikin her defasında ve her bir işlem için ayrı ayrı yazılı izni olmaksızın Mülkü kısmen veya tamamen üçüncü kişilere kiralayamaz, alt kiraya veremez; devir ve temlik edemez.</p>
+          <p>Malikin yazılı ön izni olmaksızın bir devir, alt-kiralama veya lisans veya kanun gereği bir devir veya alt-kiralama kesinlikle geçersiz ve hükümsüzdür ve Malik tek taraflı olarak bu Kira Sözleşmesini feshedebilir.</p>
+  
+          <li>DEĞİŞİKLİKLER VE İYİLEŞTİRMELER</li>
+          <p>Kiracı, Malikin yazılı ön izni olmadan Mülkte herhangi bir değişiklik veya iyileştirme yapmayacak veya Mülk üzerinde herhangi bir bina inşa etmeyecektir. Malik ve Kiracı arasındaki yazılı anlaşma ile aksi belirtilmedikçe, Kiracı tarafından Mülkte yapılan her türlü yenileme, inşaat ve / veya iyileştirmeler, Malik ile Kiracı arasındaki yazılı anlaşma ile aksi belirtilmedikçe, Malikin mülkü olacak ve Kira Sözleşmesi vaktinde veya vaktinden öce fesih yolu ile sona erdiğinde Mülkte kalacaktır.</p>
+  
+          <li>MÜLKÜN KİRACIYA TESLİMİ</li>
+          <p>Malikin, Kira süresinin başlangıcında, Malikin veya acentelerinin hiçbir kusuru olmaksızın, Mülkü Kiracıya teslim edememesi durumunda, Malik veya acentelerinin hiçbir sorumluluğu olmayacaktır, ancak kira bedeli Mülk teslim edilinceye tahakkuk etmeyecektir.</p>
+          <p>Malik veya acentelerinin Mülkü teslim etmek için <span contenteditable>30 gün</span> lük süreleri olacaktır ve bu süre içinde teslim gerçekleşirse, Kiracı Mülkü kabul etmeyi ve bu kabul tarihinden itibaren tahakkuk edecek kirayı ödemeyi kabul eder. Mülkün bu süre içinde, Malik veya acentelerinin kusuru olmaksızın teslim edilememesi durumunda, bu Kira Sözleşmesi ve burada belirtilen tüm haklar sona erecektir.</p>
+  
+          <li>TEHLİKELİ MADDELER</li>
+          <p>Kiracı, Mülkte yangın veya patlama tehlikesini makul olmayan bir şekilde artırabilecek veya herhangi bir sorumlu sigorta şirketi tarafından tehlikeli veya ekstra tehlikeli olarak değerlendirilebilecek tehlikeli yanıcı veya patlayıcı karakterde herhangi bir ögeyi Mülkte bulundurmayacaktır.</p>
+  
+          <li>ALTYAPI/KAMU HİZMETLERİ VE AİDATLAR</li>
+          <p>Kiracı, Mülkte ikamet için gerekli olan tüm altyapı/kamu hizmetlerinin (elektrik, doğal gaz, su, internet, telefon, vb) aboneliklerinin oluşturulması ve ödemelerinden sorumlu olacaktır.</p>
+          <p>Mülkün periyodik aidatları ve ısınma ve yakıt gibi diğer hizmetler için periyodik ödemeler Kiracı tarafından Mülkün bulunduğu site yönetiminin belirlediği takvime uyularak ödenecektir. Ödemelerde <span contenteditable>15 günden</span> fazla gecikme olması durumunda, Kiracı, Kiracıya ödemeyi yapması için <span contenteditable>5 gün</span> verir ve bu süre içinde ödeme yapılmazsa, Kiralayan bu kira sözleşmesini feshedebilir.</p>
+  
+          <li>BAKIM, ONARIM VE KURALLAR</li>
+          <p>Kiracı, masrafları kendisine ait olmak üzere, işbu Kira Sözleşmesinin süresi ve bunların yenilenmesi süresince Mülkü ve mülkleri iyi ve sağlıklı durumda tutacak ve bakımını yapacak ve onaracaktır. Kiracı:</p>
+          <ol class="sub-ol" type="A">
+            <li>Yalnızca giriş ve çıkış amacıyla kullanılması gereken araba yollarını, kaldırımları, giriş yollarını, merdivenleri ve / veya holleri kapatmamak;</li>
+            <li>Tüm pencereleri, camları, panjurları, kapıları, kilitleri ve donanımları olduğu şekilde korumalı ve iyi, temiz ve bakımlı tutmak;</li>
+            <li>Sert hava koşullarında pencere veya kapıları açık konumda bırakmamak;</li>
+            <li>Herhangi bir pencere, korkuluk, sundurma veya balkona herhangi bir çamaşır, giysi, çarşaf vb. asmamak veya herhangi bir avlu alanı veya açık alan içinde bunları havalandırmamak veya kurutmamak;</li>
+            <li>Malikin yazılı ön izni olmaksızın herhangi bir kapı veya pencereye kilit vurma veya çivileme vb. yapılmasına izin vermemek;</li>
+            <li>Tüm klima filtrelerini temiz ve kirden uzak tutmak;</li>
+            <li>Tüm eviyeleri, lavaboları, tuvaletleri ve diğer tüm su ve sıhhi tesisat cihazlarını iyi durumda ve bakımlı tutmak ve sadece amaçlarına uygun kullanılmalarını sağlamak;</li>
+            <li>Kiracının ailesi ve misafirleri, Mülkte ve müştemilatında her zaman düzeni korumak ve yüksek veya uygunsuz sesler çıkarmamak ve bunlara izin vermemek veya diğer sakinleri başka şekilde rahatsız etmemek; tüm radyoları, televizyon setlerini, müzik setlerini, fonograf, vb. diğer sakinleri kızdırmayacak veya rahatsız etmeyecek bir ses düzeyine düşürmek;</li>
+            <li>Tüm çöpleri, eskileri veya evsel atıkları site yönetimi veya ilgili yerel yönetim tarafından sağlanan yerlere bırakmak ve bunların uygunsuz yerlerde veya ortak alanlar içinde bırakılmasına veya durmasına izin vermemek;</li>
+            <li>Mülkü ve müştemilatı ve bunlarla ilgili ortak alanları ilgilendiren ve bina/site yönetimi veya ilgili yerel yönetim tarafından bildirilen tüm kural ve yönetmeliklere uymak.</li>
+          </ol>
+  
+          <li>HAYVANLAR</li>
+          <p>Bu Konut Kira Sözleşmesine ayrı bir yazılı Evcil Hayvan Eki ile yetki verilmedikçe HİÇBİR HAYVAN OLMAYACAKTIR. Kiracı, ayrı bir yazılı Evcil Hayvan Sözleşmesi ile aksi kararlaştırılmadıkça, geçici de olsa, memeliler, sürüngenler, kuşlar, balıklar, kemirgenler veya böcekler dahil olmak üzere hiçbir hayvanın mülkte kalmasına izin vermeyecektir.</p>
+          
+          <footer class="page-footer">
+            <div class="f-landlord">
+              <h4 class="bg-colored">Malik</h4>
+              <p><cite>İmza</cite></p>
+              <p class="landlord">.........</p>
+            </div>
+            <div class="f-tenant">
+              <h4 class="bg-colored">Kiracı</h4>
+              <p><cite>İmza</cite></p>
+              <p class="renter">.........</p>
+            </div>
+            <div class="f-guarantor">
+              <h4 class="bg-colored">Kiracı Kefili</h4>
+              <p><cite>İmza</cite></p>
+              <p class="guarantor">.........</p>
+            </div>
+            <div class="pagenumber"></div>
+          </footer>
+  
+          <div class="page-header"> </div>
+          
+          <p>Malik, herhangi bir yetkisiz hayvanın uğrayacağı herhangi bir zarar, yaralanma, ölüm veya hastalıktan sorumlu olmayacaktır. Herhangi bir izinsiz hayvanın neden olduğu Mülkte meydana gelen herhangi bir hasar veya gerekli temizlikten kiracı sorumlu ve yükümlüdür.</p>
+  
+          <li>TAZMİNAT</li>
+          <p>Malik, Kiracının, Kiracının ailesinden, misafirlerinden, davetlilerinden, acentelerinden veya çalışanlarından herhangi bir kişinin Mülkte veya Mülkün içinde olduğu binada veya müştemilatında başkalarına zarar vermelerinden veya kendilerinin bir zarar görmesinden sorumlu olmayacaktır, ve Kiracı işbu vesile ile Maliki tazmin etmeyi, savunmayı ve her türden ve nitelikteki tüm iddia veya iddialardan zarar görmemesini sağlamayı kabul eder.</p>
+          
+          <li>TEMERRÜT</li>
+          <p>Kiracı bu Kira Sözleşmesinin maddi hükümlerinden herhangi birini yerine getirmez (kira ödeme ile ilgili olanlar dışında) veya mevcut herhangi bir yasal veya kurumsal kural ve düzenlemeye uymaz veya kanunen Kiracıya yüklenen her bir sorumluluğu yerine getirmez ise, Malik Kiracıya ilgili uygunsuzluğu ve Kira Sözleşmesini bu uygunsuzluk nedeniyle sona erdirme niyetini belirten yazılı bildirimde bulunur. Yazılı bildirim tarihini takip eden <span contenteditable>10 gün</span> içinde söz konusu uygunsuzluk ortadan kaldırılmaz ise Malik bu Kira Sözleşmesini feshedebilir.</p>
+          <p>Kiracı vadesi geldiğinde kirayı ödemezse ve temerrüt ondan sonra <span contenteditable>15 gün</span> devam ederse, Malik, bu sözleşmeye göre, her türlü hukuki yola başvurma hakkı saklı kalmak şartıyla, ödenecek tüm kira bakiyesinin muaccel hale geldiğini beyan ve derhal ödenmesi gerektiğini talep edebilir veya bu Kira Sözleşmesini derhal feshedebilir.</p>
+         
+          <li>TERK</li>
+          <p>Bu Kira Sözleşmesinin süresi içinde herhangi bir zamanda Kiracı Mülkü terk ederse, Malik Mülkü devir alabilir ve bu devir alma nedeni ile Malikin Kiracı lehine herhangi bir gerekçe ile zarar tazmini veya herhangi bir ödeme yükümlülüğü yoktur.</p>
+          <p>Malik Mülkün Kiracı tarafından terk edilmesinin ardından Mülkü devir alma hakkını kullanırsa, Malik, Kiracıya ait olan ve Mülkte bırakılan tüm kişisel eşya ve malların da terk edilmiş olduğunu kabul edecektir; bu durumda, Malik her türlü sorumluluktan muaf olarak, tüm bu kişisel eşya ve malları uygun göreceği herhangi bir şekilde elden çıkarabilir.</p>
+  
+          <li>AVUKATLIK ÜCRETİ</li>
+          <p>Malikin, kiraların toplanması veya Mülkün devralınması da dahil olmak üzere, burada belirtilen koşullardan veya sözleşmelerden herhangi birini uygulamak için bir avukat tutması gerekli hale gelirse, Kiracı, makul bir avukat ücreti de dahil olmak üzere bu şekilde yapılan tüm masrafları ödemeyi kabul eder.</p>
+          
+          <li>BÖLÜNEBİLİRLİK</li>
+          <p>Bu Kira Sözleşmesinin herhangi bir hükmü veya uygulaması, herhangi bir nedenle ve herhangi bir ölçüde geçersiz veya uygulanamaz hale gelirse, ne bu Kira Sözleşmesinin geri kalanı ne de hükmün diğer kişilere, kuruluşlara veya koşullara uygulanması bundan etkilenmeyecek olup yasaların izin verdiği azami ölçüde uygulanacaktır.</p>
+          
+          <li>BAĞLAYICI ETKİ</li>
+          <p>Burada yer alan hükümler, yükümlülükler ve koşullar, tarafların mirasçıları, yasal temsilcileri ve vekilleri için bağlayıcı olacak ve onların yararına olacaktır.</p>
+          
+          <li>FERAGAT</li>
+          <p>Bu Kira Sözleşmesi kapsamında Malik tarafından hiçbir gecikme, müsamaha, feragat, icra etmeme, seçim veya seçim yapılmaması, Kiracı tarafından Malikin herhangi bir haktan vazgeçmesi olarak kabul edilmeyecek olup, Kiracının bu sözleşmeden doğan yükümlülükleri, sorumlulukları ve borçları etkilenmeyecektir.</p>
+          
+          <li>DEĞİŞİKLİK</li>
+          <p>Taraflar, işbu belgenin taraflar arasındaki sözleşmenin tamamını içerdiğini ve işbu Kira Sözleşmesi'nin tüm taraflarca imzalanmış yazılı bir değişiklik olmaksızın hiçbir şekilde tadil edilemeyeceğini ve değiştirilmeyeceğini kabul ederler.</p>
+  
+          <li>TEBLİGAT</li>
+          <p>Bu Kira Sözleşmesi kapsamında veya yasalara göre gerekli veya izin verilen herhangi bir bildirim için tebligat adresi, Malik ve Kiracı için bu sözleşmede yer verilmiş adreslerdir.</p>
+  
+          <li>ADRES KAYIT</li>
+          <p>Kiracı, <span contenteditable>5 gün</span> içinde, aile beyannamesini mahalle muhtarlığına verecektir.</p>
+  
+          <li>UYGULANACAK HUKUK</li>
+          <p>Bu Kira Sözleşmesi, Türkiye Cumhuriyeti Kanunları tarafından, aracılığıyla ve bunlara göre anlaşılacak, yorumlanacak, yönetilecek ve yürütülecektir.</p>
+          <p>İş bu kira sözleşmesinde yer almayan hususlar hakkında 6098 Sayılı Borçlar Kanunu hükümleri geçerlidir.</p>
+          
+          <footer class="page-footer">
+            <div class="f-landlord">
+              <h4 class="bg-colored">Malik</h4>
+              <p><cite>İmza</cite></p>
+              <p class="landlord">.........</p>
+            </div>
+            <div class="f-tenant">
+              <h4 class="bg-colored">Kiracı</h4>
+              <p><cite>İmza</cite></p>
+              <p class="renter">.........</p>
+            </div>
+            <div class="f-guarantor">
+              <h4 class="bg-colored">Kiracı Kefili</h4>
+              <p><cite>İmza</cite></p>
+              <p class="guarantor">.........</p>
+            </div>
+            <div class="pagenumber"></div>
+          </footer>
+  
+          <div class="page-header"> </div>
+  
+          <li>AÇIKLAMA BAŞLIKLARI</li>
+          <p>Burada kullanılan açıklayıcı başlıklar yalnızca referans amaçlıdır ve Malik veya Kiracının haklarını veya yükümlülüklerini belirlemede herhangi bir etkiye sahip olmaları amaçlanmamıştır.</p>
+  
+          <li>Ek Madde - 1 :
+            <div class="input-long">
+              <textarea id="add-article-1"></textarea>
+            </div>
+          </li>
+  
+          <li class="addition">Ek Madde - 2 :
+            <div class="input-long">
+              <textarea id="add-article-2"></textarea>
+            </div>
+          </li>
+          <li class=" addition">Ek Madde - 3 :
+            <div class="input-long">
+              <textarea id="add-article-3"></textarea>
+            </div>
+          </li>
+  
+          <li>EK BELGELER</li>
+          <ol class="sub-ol" type="1">
+            <li><span contenteditable>Malik kimlik fotokobisi</span></li>
+            <li><span contenteditable>Kiracının kimlik fotokobisi</span></li>
+            <li><span contenteditable>Kefilin kimlik fotokobisi</span></li>
+            <li><span contenteditable>Mülk Tapusu / Yapı Kayıt Belgesi fotokobisi</span></li>
+          </ol>
+  
+          <li>İMZA</li>
+          <p>İşbu <span contenteditable>5 Sayfa ve 4 Ek Belge</span> den ibaret sözleşmeyi, hür iradelerimizle ve iki nüsha olarak imzaladık.</p>
+        </ol>
+  
+        <footer class="page-footer">
+          <div class="f-landlord">
+            <h4 class="bg-colored">Malik</h4>
+            <p><cite>İmza</cite></p>
+            <p class="landlord">.........</p>
+          </div>
+          <div class="f-tenant">
+            <h4 class="bg-colored">Kiracı</h4>
+            <p><cite>İmza</cite></p>
+            <p class="renter">.........</p>
+          </div>
+          <div class="f-guarantor">
+            <h4 class="bg-colored">Kiracı Kefili</h4>
+            <p><cite>İmza</cite></p>
+            <p class="guarantor">.........</p>
+          </div>
+          <div class="pagenumber"></div>
+        </footer>
+      </div>
+  
+    </form>
+    
+    <nav class="navigator">
+      <div class="logo">
+        <h1>Forms</h1>
+        <h4>www.forms.com.tr</h4>
+      </div>
+      <ul id="navbar" class="nav-bar">
+        <li><a class="nav-link" href="#introduction">Introduction</a></li>
+        <li><a class="nav-link" href="#equipment">Our Products</a></li>
+        <li><a class="nav-link" href="#service">Service & Support</a></li>
+  <!--       <li><input class="printpdf" type="button" id="printme" name="printbutton" value="Print me PDF" onclick="printDiv('contract')" /></li> -->
+        <li><input class="printpdf" type="button" id="printwin" name="printbut" value="Print as PDF" onclick="window.print('contract')" /></li>
+      </ul>
+      <div class="re-office">
+        <h3>Emlak Ofisi</h3>
+        <label for="re-agent">Temsilci :</label>
+        <input type="text" id="re-agent" name="re-agent" value="" readonly>
+        <label for="re-tel">Telefon :</label><input id="re-tel" type="tel" placeholder="5xx-xxx-xxx-xx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{2}" readonly> <label for="re-email">E-mail :</label><input id="re-email" type="email" maxlength="50" readonly>
+        <label for="re-address">Adres :</label>
+        <input type="text" id="re-address" name="re-address" value="" readonly>
+      </div>
+    </nav>  
+  
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

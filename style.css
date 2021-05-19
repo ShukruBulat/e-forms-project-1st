@@ -1,0 +1,586 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap");
+
+@import url("https://css.gg/phone.css");
+
+/* @supports (grid-area: auto) {
+  body {
+    display: grid;
+  }
+} */
+
+:root {
+  --color-white: #f3f3f3;
+  --color-orange: rgba(191, 72, 17, 0.9);
+  --color-darkblue: rgba(14, 59, 130, 0.9);
+  --color-green: #008c15;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  font-family: "Poppins";
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+  width: 94%;
+  margin: 20px auto;
+}
+
+.navigator {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  width: 200px;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  margin: 0 0 0 20px;
+  padding: 10px 10px;
+  background: linear-gradient(
+    45deg,
+    rgba(116, 116, 116, 1),
+    rgba(255, 255, 255, 1)
+  );
+  border-radius: 3px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 900;
+  color: var(--color-darkblue);
+  font-family: oswald;
+}
+
+.logo h1 {
+  font-size: 3rem;
+}
+
+.nav-bar {
+  margin-top: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 0;
+}
+
+a.nav-link:hover {
+  transform: scale(1.1);
+  transition: transform 500ms ease;
+}
+
+a.nav-link,
+.printpdf {
+  display: inline-block;
+  color: white;
+  background: var(--color-darkblue);;
+  margin-top: 3px;  
+  border-radius: 3px;
+  text-decoration: none;
+  text-align: center;
+  justify-self: center;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  padding: 5px;
+  width: 160px;
+  box-shadow: 0 0 0 0.1rem rgba(0, 0, 255, 0.15);
+  transition: transform 500ms ease;
+}
+
+#printme,
+#printwin {
+  margin-top: 25px;
+  text-align: center;
+  font-family: "Poppins";
+  font-weight: 550;
+  font-style: normal;
+  color: white;
+  background: #e65315;
+  cursor: pointer;
+}
+
+#printwin {
+  background: #e65315;
+}
+
+
+.re-office h3 {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: var(--color-darkblue);
+  font-weight: bold;
+}
+
+.navigator input {
+  margin: 0;
+  background: #d4f2fa;
+}
+
+.navigator label {
+  margin: 0;
+  text-align: left;
+  color: var(--color-darkblue);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 0 5px;
+  font-family: SourceSans-Semibold, Arial, Helvetica, sans-serif;
+}
+
+.input-line,
+.input-long {
+  display: flex;
+  width: 100%;
+  border-radius: 5px;
+  padding: 1px 2px;
+}
+
+label,
+.input-line p {
+  display: block;
+  flex: 1 1 auto;
+  font-size: 0.9rem;
+  font-weight: 450;
+  font-family: Arial Narrow;
+  width: 40%;
+  align-self: center;
+  text-align: right;
+}
+
+.input-long label {
+  width: 16%;
+}
+
+input,
+button,
+select,
+textarea {
+  flex: 1 1 auto;
+  justify-self: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 3px 5px;
+  margin-left: 4px;
+  font-family: indie flower;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 550;
+  color: #071c4a;
+  line-height: 1.4rem;
+  background: #ebeff0;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 56px;
+  min-height: 56px;
+}
+
+.articles li textarea {
+  margin-left: 0px;
+}
+
+/* a textarea definition */
+.fixtures {
+  max-height: 120px;
+  min-height: 120px;
+}
+
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
+
+h4 {
+  padding: 5px 0px;
+  text-align: center;
+  align-self: center;
+  font-family: "Poppins";
+  font-size: 0.9rem;
+}
+
+.container h1 {
+  line-height: 1.4;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Poppins";
+  font-weight: 660;
+  background: lightgray;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.contract-date-no {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  font-size: 0.9rem;
+  height: 50px;
+  width: 100%;
+  background-clip: padding-box;
+  padding: 5px 0;
+}
+
+.contractors {
+  margin-top: 20px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "leaser tenant" "leaser-address tenant-address";
+  font-size: 0.9rem;
+  height: auto;
+  width: 100%;
+  background-clip: padding-box;
+  align-items: top;
+}
+
+.leaser {
+  grid-area: leaser;
+  display: flex;
+  flex-direction: column;
+  padding-top: 7px;
+}
+
+.tenant {
+  grid-area: tenant;
+  display: flex;
+  flex-direction: column;
+  padding-top: 7px;
+}
+
+.leaser-address,
+.tenant-address {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  list-style: none;
+  place-items: flex-end;
+}
+
+.terms {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#t-header {
+  grid-area: t-header;
+  list-style: none;
+  place-items: center;
+}
+
+.terms-grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "terms-date terms-value";
+  font-size: 0.9rem;
+  height: auto;
+  width: 100%;
+  background-clip: padding-box;
+  align-items: top;
+}
+
+.terms-date {
+  grid-area: terms-date;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  list-style: none;
+  place-items: flex-end;
+}
+
+.terms-value {
+  grid-area: terms-value;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  list-style: none;
+  place-items: flex-end;
+}
+
+.terms-payment {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  list-style: none;
+  place-items: flex-end;
+  padding: 5px 0px;
+}
+
+.property-main {
+  margin-top: 20px;
+  text-align: center;
+  height: auto;
+  width: 100%;
+  background-clip: padding-box;
+  padding: 5px 0;
+  padding-top: 7px;
+  padding-bottom: 5px;
+}
+
+.property {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  list-style: none;
+  place-items: flex-end;
+  padding-top: 7px;
+  padding-bottom: 5px;
+}
+
+.subject {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "re-address utility-list";
+  font-size: 0.9rem;
+  height: 100%;
+  width: 100%;
+  background-clip: padding-box;
+  align-items: top;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.re-address {
+  grid-area: re-address;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  list-style: none;
+  place-items: flex-end;
+}
+
+.utility-list {
+  grid-area: utility-list;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  list-style: none;
+  place-items: flex-end;
+}
+
+.page-header {
+  height: 50px;
+  width: 100%;
+}
+
+.page-footer {
+  counter-increment: page;
+  margin-top: 40px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: "auto" "auto";
+  grid-template-areas:
+    "f-landlord f-tenant f-guarantor"
+    "pagenumber pagenumber pagenumber";
+  font-size: 0.9rem;
+  border-radius: 5px;
+  height: 100px;
+  width: 100%;
+  background-clip: padding-box;
+  text-align: center;
+  align-items: start;
+}
+
+.f-landlord {
+  grid-area: f-landlord;
+}
+
+.f-tenant {
+  grid-area: f-tenant;
+}
+
+.f-guarantor {
+  grid-area: f-guarantor;
+}
+
+.page-footer p,
+#guarant-name {
+  margin: 10px 0 0 0;
+  font-size: 0.9rem;
+  font-weight: 550;
+  height: 100%;
+  width: 100%;
+  border: none;
+  text-align: center;
+  align-self: center;
+}
+
+.pagenumber {
+  margin-top: 15px;
+  grid-area: pagenumber;
+}
+
+.pagenumber:after {
+  content: "Sayfa - " counter(page);
+  display: flex;
+  background-color: #7fbf35;
+  border-radius: 3px;
+  padding: 2px 0px;
+  height: 20px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  justify-items: flex-end;
+}
+
+.bg-colored {
+  background: #d9dcde;
+  border-radius: 3px;
+}
+
+span[contenteditable] {
+  font-family: indie flower;
+  font-style: italic;
+  background: #f0f558;
+  font-weight: 550;
+  padding: 0 5px;
+  align-self: center;
+  border-radius: 3px;
+}
+
+span.auto {
+  background: #a2f2f1;
+  border-radius: 5px;
+  font-family: indie flower;
+  font-weight: 550;
+  padding: 0 5px;
+  align-self: center;
+  border-radius: 3px;
+}
+
+span:active,
+span:focus {
+  border: none;
+  outline: none;
+  background: #7af558;
+}
+
+span:hover::before,
+span:focus::before {
+  background: #7af558;
+  border: none;
+}
+
+.articles {
+  margin: 30px 0px;
+  font-size: 1rem;
+}
+
+.articles li {
+  padding: 3px 5px;
+  margin-left: 15px;
+}
+
+#article > li {
+  list-style-position: inside;
+  margin-left: 0px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+#article > p {
+  margin-left: 5px;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.sub-ol {
+  padding-left: 30px;
+  margin-bottom: 5px;
+  text-align: justify;
+}
+
+@media print {
+  /* this definition is needed for printDiv function */
+  body {
+    margin-top: 2.5cm;
+    margin-bottom: 1cm;
+    margin-left: 1.2cm;
+    margin-right: 1cm;
+  }
+
+  .wrapper * {
+    visibility: hidden;
+  }
+  
+  .navigator {
+    width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  #contract * {
+    visibility: visible;
+  }
+  
+  /* this definition is needed for window. print function */
+  h1.bg-colored  {
+    background: lightgray;
+    text-align: center;
+    font-size: 60pt;  }
+  
+  #contract {
+    width: 100%;
+}
+  .articles {
+    margin-top: 100px;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 13pt;
+    
+    page-break-before: auto !important;
+  }
+
+  .page-header {
+    page-break-before: always !important;
+  }
+  
+  .page-footer {
+    page-break-after: always !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    page-break-before: avoid;
+  }
+
+  table,
+  figure {
+    page-break-inside: avoid;
+  }
+} 
